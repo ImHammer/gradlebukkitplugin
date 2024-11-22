@@ -57,3 +57,40 @@ bukkitpulugin {
     }
 }
 ```
+
+### Output plugin.yml
+```yaml
+main: org.spigotmc.annotationtest.Test
+name: TestPlugin
+version: '1.0'
+description: A test plugin
+load: POSTWORLD
+author: md_5
+depend:
+- WorldEdit
+- Towny
+prefix: Testing
+softdepend:
+- FAWE
+loadbefore:
+- Essentials
+commands:
+  foo:
+    description: Foo Command
+    aliases:
+    - foobar
+    - fubar
+    permission: test.foo
+    permission-message: You do not have permission!
+    usage: /<command> [test|stop]
+permissions:
+  test.foo:
+    default: op
+    description: Allows foo command
+  test.*:
+    default: op
+    description: Wildcard permission
+    children:
+      test.foo: true
+
+```
